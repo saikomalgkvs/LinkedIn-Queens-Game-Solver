@@ -1,12 +1,10 @@
-class Block{
-    int x;
-    int y;
-    private int id;
-    private int xcount;
+// Represents each cell of the board
 
-    Block(int x, int y, int id){
-        this.x = x;
-        this.y = y;
+class Block{
+    private int id; // unique color
+    private int xcount; // represents if a block is safe or not, 0 - safe, >0 - not safe
+
+    Block(int id){
         this.id = id;
         this.xcount = 0;
     }
@@ -22,6 +20,8 @@ class Block{
     public void delx(){
         if(xcount > 0) xcount--;
     }
-    public int getXcount(){ return xcount; }
-        
+    public int getXcount(){
+        return xcount; 
+    }
+    
 }

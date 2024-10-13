@@ -1,9 +1,9 @@
 import java.util.Arrays;
 
 public class Solver{
-    Block[][] boardObj;
-    int[][] board;
-    int n;
+    private Block[][] boardObj;
+    private int[][] board;
+    private int n;
 
     Solver(int[][] board, int n){
         this.board = board;
@@ -11,12 +11,12 @@ public class Solver{
         build(board);
     }
 
-    public void build(int[][] board){
+    private void build(int[][] board){
         boardObj = new Block[n][n];
 
         for(int i=0; i<n; ++i){
             for(int j=0; j<n; ++j){
-                boardObj[i][j] = new Block(i, j, board[i][j]);
+                boardObj[i][j] = new Block(board[i][j]);
             }
         }
     }
@@ -31,6 +31,14 @@ public class Solver{
             System.out.println(Arrays.toString(row));
         }
         System.out.println();
+    }
+    public boolean solveOptimize(){
+        // Need to be coded
+
+
+
+
+        return false;
     }
     public boolean solve(){
         if(solveHelper(0)) return true;
@@ -53,7 +61,7 @@ public class Solver{
 
         return false;
     }
-    public void addQueen(int r, int c){
+    private void addQueen(int r, int c){
         // x added to region
         floodfill(r, c, board[r][c], new boolean[n][n], true);
 
@@ -76,7 +84,7 @@ public class Solver{
         board[r][c] = 0; // 0 - queen
         
     }
-    public void rmQueen(int r, int c, int q){
+    private void rmQueen(int r, int c, int q){
         
         board[r][c] = q;
         
