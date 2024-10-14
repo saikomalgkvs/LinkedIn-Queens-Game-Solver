@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Solver{
+class Solver{
     private Block[][] boardObj;
     private int[][] board;
     private int n;
@@ -31,14 +31,6 @@ public class Solver{
             System.out.println(Arrays.toString(row));
         }
         System.out.println();
-    }
-    public boolean solveOptimize(){
-        // Need to be coded
-
-
-
-
-        return false;
     }
     public boolean solve(){
         if(solveHelper(0)) return true;
@@ -75,18 +67,18 @@ public class Solver{
             boardObj[r][col].addx();
         }
 
-        // x added to four courners
+        // x added to four courners surrounding queen
         if(r>0 && c>0) boardObj[r-1][c-1].addx();
         if(r<n-1 && c>0) boardObj[r+1][c-1].addx();
         if(r>0 && c<n-1) boardObj[r-1][c+1].addx();
         if(r<n-1 && c<n-1) boardObj[r+1][c+1].addx();
         
-        board[r][c] = 0; // 0 - queen
+        board[r][c] = 0; // 0 represents queen
         
     }
     private void rmQueen(int r, int c, int q){
         
-        board[r][c] = q;
+        board[r][c] = q; // queen is replaced with the original color
         
         // x removed from region
         floodfill(r, c, board[r][c], new boolean[n][n], false);
@@ -101,7 +93,7 @@ public class Solver{
             boardObj[r][col].delx();
         }
         
-        // x removed from four corners
+        // x removed from four corners surrounding the queen
         if(r>0 && c>0) boardObj[r-1][c-1].delx();
         if(r<n-1 && c>0) boardObj[r+1][c-1].delx();
         if(r>0 && c<n-1) boardObj[r-1][c+1].delx();
