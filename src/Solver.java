@@ -21,8 +21,23 @@ class Solver{
         }
     }
     public void print(){
-        for(int[] row : board){
-            System.out.println(Arrays.toString(row));
+        for(int i=0; i<n; i++){
+            System.out.print("----");
+        }
+        System.out.println("-");
+
+        for(int i=0; i<n; i++){
+            System.out.print("| ");
+            for(int j=0; j<n; j++){
+                if(board[i][j] == 0) System.out.print("Q");
+                else System.out.print(board[i][j]);
+                System.out.print(" | ");
+            }
+            System.out.println();
+            for(int j=0; j<n; j++){
+                System.out.print("----");
+            }
+            System.out.println("-");
         }
         System.out.println();
     }
